@@ -17,19 +17,20 @@ public class Calculator {
         return firstOperand + secondOperand;
     }
 
-    public int subtract(int firstOperand, int secondOperand) {
-        throw new UnsupportedOperationException();
+    public int subtract(int firstOperand, int secondOperand) 
+    {
+    	return firstOperand - secondOperand;
     }
 
     public int divide(int dividend, int divisor) {
-        throw new UnsupportedOperationException();
+    	return dividend / divisor;
     }
 
     public int multiply(int firstOperand, int secondOperand) {
-        throw new UnsupportedOperationException();
+    	return firstOperand * secondOperand;
     }
 
     public int factorial(int firstOperand) {
-        throw new UnsupportedOperationException();
+    	return firstOperand == 0 ? 1 : firstOperand * this.factorial(firstOperand -1); 
     }
 }

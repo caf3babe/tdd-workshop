@@ -8,10 +8,12 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class CalculatorTest {
 
     @BeforeAll
-    public static void classSetUp() {
+    public static void classSetUp() 
+    {
         //HACK: for demonstration purposes only
-        System.out.println(
-                "This is a CalculatorTest class method and takes place before any @Test is executed");
+        System.out.println("This is a CalculatorTest class method and takes place before any @Test is executed");
+        
+   
     }
 
     @AfterAll
@@ -37,10 +39,12 @@ public class CalculatorTest {
 
     @Test
     @Disabled
-    public void failingTest() {
+    public void failingTest() 
+    {
         fail("a disabled failing test");
     }
 
+   
     /**
      * Test to ensure two positive numbers are summed correctly.<p>
      * <p>
@@ -58,12 +62,12 @@ public class CalculatorTest {
 
         // Arrange
         int expectedResult = 5;
-        int firsOperand = 3;
+        int firstOperand = 3;
         int secondOperand = 2;
         int result = 3;
 
         // Act
-        result = new Calculator().sum(firsOperand, secondOperand);
+        result = new Calculator().sum(firstOperand, secondOperand);
 
         // Assert
         assertEquals(expectedResult, result);
@@ -84,17 +88,37 @@ public class CalculatorTest {
         }.getClass().getEnclosingMethod().getName() + " Test");
 
         // Arrange
-        int firsOperand = 3;
+        int firstOperand = 3;
         int secondOperand = -2;
         int expectedResult = 1;
         int result = 3;
 
         // Act
-        result = new Calculator().sum(firsOperand, secondOperand);
+        result = new Calculator().sum(firstOperand, secondOperand);
 
         // Assert
         assertEquals(expectedResult, result);
     }
+    @Test
+    public void ensureMinusFivePlusMinusFiveEqualsMinusTen()
+    {
+    	System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+    	
+    	
+    	int expectedResult = -10;
+        int firstOperand = -5;
+        int secondOperand = -5;
+        int result = 7;
+    	
+    	
+        result = new Calculator().sum(firstOperand, secondOperand);
+       
+        assertEquals(expectedResult, result);
+    }
+    
+    
+    
 }
 
 
