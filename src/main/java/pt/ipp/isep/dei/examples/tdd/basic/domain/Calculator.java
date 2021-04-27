@@ -25,11 +25,11 @@ public class Calculator {
         throw new UnsupportedOperationException();
     }
 
-    public int multiply(int dividend, int divisor) {
+    public int multiply(int firstOperand, int secondOperand) {
         throw new UnsupportedOperationException();
     }
 
-    public int factorial(int number) {
+    public int factorial(int firstOperand) {
         throw new UnsupportedOperationException();
     }
 }
