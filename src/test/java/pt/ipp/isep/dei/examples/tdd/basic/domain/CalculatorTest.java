@@ -2,18 +2,16 @@ package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
     @BeforeAll
-    public static void classSetUp() 
-    {
+    public static void classSetUp() {
         //HACK: for demonstration purposes only
         System.out.println("This is a CalculatorTest class method and takes place before any @Test is executed");
-        
-   
+
+
     }
 
     @AfterAll
@@ -39,12 +37,11 @@ public class CalculatorTest {
 
     @Test
     @Disabled
-    public void failingTest() 
-    {
+    public void failingTest() {
         fail("a disabled failing test");
     }
 
-   
+
     /**
      * Test to ensure two positive numbers are summed correctly.<p>
      * <p>
@@ -81,6 +78,7 @@ public class CalculatorTest {
      * Act I sum three to minus two<p>
      * Assert the sum result should be one.
      */
+
     @Test
     public void ensureThreePlusMinusTwoEqualsOne() {
         //HACK: for demonstration purposes only
@@ -99,26 +97,240 @@ public class CalculatorTest {
         // Assert
         assertEquals(expectedResult, result);
     }
+
     @Test
-    public void ensureMinusFivePlusMinusFiveEqualsMinusTen()
-    {
-    	System.out.println("\t\tExecuting " + new Object() {
+    public void ensureMinusFivePlusMinusFiveEqualsMinusTen() {
+        System.out.println("\t\tExecuting " + new Object() {
         }.getClass().getEnclosingMethod().getName() + " Test");
-    	
-    	
-    	int expectedResult = -10;
+
+        int expectedResult = -10;
         int firstOperand = -5;
         int secondOperand = -5;
         int result = 7;
-    	
-    	
+
         result = new Calculator().sum(firstOperand, secondOperand);
-       
+
         assertEquals(expectedResult, result);
     }
-    
-    
-    
+
+    @Test
+    public void whenIntegerOverflowInAddition_thenAssertionSucceeds() {
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int firstOperand = 2147483647;
+        int secondOperand = 2147483647;
+
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            new Calculator().sum(firstOperand, secondOperand);
+        });
+
+        String expectedMessage = "integer overflow";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.equalsIgnoreCase(expectedMessage));
+    }
+
+    /**
+    *
+    * Subtract Function Tests
+    *
+    * */
+
+    @Test
+    public void ensureThreeMinusMinusTwoEqualsFive() {
+        //HACK: for demonstration purposes only
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        // Arrange
+        int firstOperand = 3;
+        int secondOperand = -2;
+        int expectedResult = 5;
+        int result = 3;
+
+        // Act
+        result = new Calculator().subtract(firstOperand, secondOperand);
+
+        // Assert
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void ensureMinusFiveMinusMinusFiveEqualsZero() {
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int expectedResult = 0;
+        int firstOperand = -5;
+        int secondOperand = -5;
+        int result = 7;
+
+        result = new Calculator().subtract(firstOperand, secondOperand);
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void whenIntegerOverflowInSubtraction_thenAssertionSucceeds() {
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int firstOperand = -2147483647;
+        int secondOperand = 2147483647;
+
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            new Calculator().subtract(firstOperand, secondOperand);
+        });
+
+        String expectedMessage = "integer overflow";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.equalsIgnoreCase(expectedMessage));
+    }
+
+    /**
+     *
+     * Division Function Tests
+     *
+     * */
+
+    @Test
+    public void ensureThreeDividedByTwoEqualsOne() {
+        //HACK: for demonstration purposes only
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        // Arrange
+        int firstOperand = 3;
+        int secondOperand = 2;
+        int expectedResult = 1;
+        int result = 3;
+
+        // Act
+        result = new Calculator().divide(firstOperand, secondOperand);
+
+        // Assert
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void ensureMinusFiveDividedByMinusFiveEqualsOne() {
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int expectedResult = 1;
+        int firstOperand = -5;
+        int secondOperand = -5;
+        int result = 7;
+
+        result = new Calculator().divide(firstOperand, secondOperand);
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void whenDividedByZero_thenAssertionSucceeds() {
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int firstOperand = -2147483647;
+        int secondOperand = 0;
+
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            new Calculator().divide(firstOperand, secondOperand);
+        });
+
+        String expectedMessage = "Can't divide by Zero";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.equalsIgnoreCase(expectedMessage));
+    }
+
+
+    /**
+     *
+     * Multiplication Function Tests
+     *
+     * */
+
+    @Test
+    public void ensureFiveMultipliedByThreeEqualsFifteen() {
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int expectedResult = 15;
+        int firstOperand = 5;
+        int secondOperand = 3;
+        int result = 7;
+
+        result = new Calculator().multiply(firstOperand, secondOperand);
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void whenMultiplicationExceedsIntegerRange_thenAssertionSucceeds() {
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int firstOperand = 2147483647;
+        int secondOperand = 345;
+
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            new Calculator().multiply(firstOperand, secondOperand);
+        });
+
+        String expectedMessage = "integer overflow";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.equalsIgnoreCase(expectedMessage));
+    }
+
+
+    /**
+     *
+     * Factorial Function Tests
+     *
+     * */
+
+    @Test public void ensureFactorialOfZeroIsOne(){
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int number = 0;
+        int expected = 1;
+
+        int result = new Calculator().factorial(number);
+
+        assertEquals(expected, result);
+    }
+
+    @Test public void ensureFactorialOfOneIsOne(){
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int number = 1;
+        int expected = 1;
+
+        int result = new Calculator().factorial(number);
+
+        assertEquals(expected, result);
+    }
+
+    @Test public void calculateFactorialOfTen(){
+        System.out.println("\t\tExecuting " + new Object() {
+        }.getClass().getEnclosingMethod().getName() + " Test");
+
+        int number = 10;
+        int expected = 3628800;
+
+        int result = new Calculator().factorial(number);
+
+        assertEquals(expected, result);
+    }
+
+
 }
 
 

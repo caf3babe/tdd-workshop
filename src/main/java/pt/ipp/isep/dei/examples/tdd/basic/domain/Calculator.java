@@ -14,23 +14,26 @@ public class Calculator {
      * @return The sum of firstOperand with secondOperand.
      */
     public int sum(int firstOperand, int secondOperand) {
-        return firstOperand + secondOperand;
+        return Math.addExact(firstOperand, secondOperand);
     }
 
     public int subtract(int firstOperand, int secondOperand) 
     {
-    	return firstOperand - secondOperand;
+    	return Math.subtractExact(firstOperand, secondOperand);
     }
 
     public int divide(int dividend, int divisor) {
+        if (divisor == 0){
+            throw new ArithmeticException("Can't divide by Zero");
+        }
     	return dividend / divisor;
     }
 
     public int multiply(int firstOperand, int secondOperand) {
-    	return firstOperand * secondOperand;
+    	return Math.multiplyExact(firstOperand, secondOperand);
     }
 
     public int factorial(int firstOperand) {
-    	return firstOperand == 0 ? 1 : firstOperand * this.factorial(firstOperand -1); 
+    	return firstOperand == 0 ? 1 : firstOperand * this.factorial(firstOperand -1);
     }
 }
