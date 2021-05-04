@@ -72,9 +72,11 @@ local.properties
 
 # User-specific stuff:
 .idea
+.idea/.name
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
+tdd-basic-example.iml
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
