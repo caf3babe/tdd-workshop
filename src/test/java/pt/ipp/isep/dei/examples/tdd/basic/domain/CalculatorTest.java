@@ -97,6 +97,8 @@ public class CalculatorTest {
         // Assert
         assertEquals(expectedResult, result);
     }
+    
+   
 
     @Test
     public void ensureMinusFivePlusMinusFiveEqualsMinusTen() {
@@ -328,6 +330,24 @@ public class CalculatorTest {
         int result = new Calculator().factorial(number);
 
         assertEquals(expected, result);
+    }
+    
+    @Test
+    public void whenFactorialExceedsIntegerRange_thenAssertionSucceeds()
+    {
+    	 System.out.println("\t\tExecuting " + new Object() {
+         }.getClass().getEnclosingMethod().getName() + " Test");
+
+         int number = 600;
+
+         Exception exception = assertThrows(ArithmeticException.class, () -> {
+             new Calculator().factorial(number);
+         });
+         
+         String expectedMessage = "integer overflow";
+         String actualMessage = exception.getMessage();
+
+         assertTrue(actualMessage.equalsIgnoreCase(expectedMessage));
     }
 
 

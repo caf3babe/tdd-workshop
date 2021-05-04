@@ -33,7 +33,18 @@ public class Calculator {
     	return Math.multiplyExact(firstOperand, secondOperand);
     }
 
-    public int factorial(int firstOperand) {
-    	return firstOperand == 0 ? 1 : firstOperand * this.factorial(firstOperand -1);
+    public int factorial(int firstOperand) 
+    {
+    	int result = 1;
+    	for(int i  = firstOperand; i >= 1; i--)
+    	{
+    		if(result*firstOperand < 0 )
+    		{
+    			throw new ArithmeticException("Integer overflow");
+    		}
+    		System.out.println(result+" "+i);
+    		result*= i;
+    	}
+    	return result;
     }
 }
