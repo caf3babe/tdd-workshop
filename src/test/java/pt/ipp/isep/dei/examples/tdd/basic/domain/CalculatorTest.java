@@ -358,11 +358,27 @@ public class CalculatorTest {
     	
     	int expected = 25;
     	
-    	double result = new Calculator().exponential(5,2);
+    	double result = new Calculator().exponential(number,exponential);
     	
     	assertEquals(expected,result);
     	
     }
+    
+    @Test
+    public void calculateZeroPowerMinusTwo()
+    {
+    	int number = 0;
+    	int exponential = -2;
+    	
+    	int expected = 0;
+    	
+    	
+    	double result = new Calculator().exponential(number,exponential);
+    	assertEquals(expected,result);
+    	
+    }
+    
+    
 
 }
 

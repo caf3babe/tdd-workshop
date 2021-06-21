@@ -50,6 +50,11 @@ public class Calculator {
     }
     public double exponential(float number, float exponent)
     {
+    	double result = Math.pow(number,exponent);
+    	if(Double.isInfinite(result))
+    	{
+    		return 0;
+    	}
     	return Math.pow(number, exponent);
     }
 }
