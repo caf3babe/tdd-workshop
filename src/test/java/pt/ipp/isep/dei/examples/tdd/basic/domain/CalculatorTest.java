@@ -379,7 +379,7 @@ public class CalculatorTest {
     }
     
     @Test
-    public void calculateSquarerootOfTen()
+    public void calculateSquareRootOfTen()
     {
     	int number = 10;
     	
@@ -388,10 +388,21 @@ public class CalculatorTest {
     	
     	double result = new Calculator().squareRoot(number);
     	
-    	System.out.println("Result is: "+ result);
-    	
     	assertEquals(expected,result);
     	
+    }
+    
+    @Test
+    public void calculateSquareRootOfMinusThousand()
+    {
+    	int number = -1000;
+    	
+    	double expected = 0.0;
+    	
+    	
+    	double result = new Calculator().squareRoot(number);
+    	
+    	assertEquals(expected,result);
     }
 
 }
