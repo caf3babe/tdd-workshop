@@ -48,7 +48,7 @@ public class Calculator {
     	}
     	return result;
     }
-    public double exponential(float number, float exponent)
+    public double exponential(double number, double exponent)
     {
     	double result = Math.pow(number,exponent);
     	if(Double.isInfinite(result))
@@ -57,4 +57,13 @@ public class Calculator {
     	}
     	return Math.pow(number, exponent);
     }
+   
+    public double squareRoot(double number)
+    {
+    	double d = Math.pow(10, 2);
+    	return (Math.round(Math.sqrt(number)*d))/d;
+    }
+    
+    
+    
 }

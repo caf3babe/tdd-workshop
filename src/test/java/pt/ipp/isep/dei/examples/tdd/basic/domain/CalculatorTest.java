@@ -378,7 +378,21 @@ public class CalculatorTest {
     	
     }
     
-    
+    @Test
+    public void calculateSquarerootOfTen()
+    {
+    	int number = 10;
+    	
+    	double expected = 3.16;
+    	
+    	
+    	double result = new Calculator().squareRoot(number);
+    	
+    	System.out.println("Result is: "+ result);
+    	
+    	assertEquals(expected,result);
+    	
+    }
 
 }
 
