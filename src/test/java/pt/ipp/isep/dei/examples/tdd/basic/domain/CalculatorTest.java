@@ -349,7 +349,20 @@ public class CalculatorTest {
 
          assertTrue(actualMessage.equalsIgnoreCase(expectedMessage));
     }
-
+    
+    @Test
+    public void calculateFivePowerTwo()
+    {
+    	int number = 5;
+    	int exponential = 2;
+    	
+    	int expected = 25;
+    	
+    	double result = new Calculator().exponential(5,2);
+    	
+    	assertEquals(expected,result);
+    	
+    }
 
 }
 

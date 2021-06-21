@@ -32,6 +32,7 @@ public class Calculator {
     public int multiply(int firstOperand, int secondOperand) {
     	return Math.multiplyExact(firstOperand, secondOperand);
     }
+    
 
     public int factorial(int firstOperand) 
     {
@@ -46,5 +47,9 @@ public class Calculator {
     		result*= i;
     	}
     	return result;
+    }
+    public double exponential(float number, float exponent)
+    {
+    	return Math.pow(number, exponent);
     }
 }
